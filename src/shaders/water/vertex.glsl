@@ -5,6 +5,9 @@ uniform vec2 uBigWavesFrequency;
 // we will retrieve the uTime value and use it in both sin(...) functions
 uniform float uTime;
 
+// to control speed of the waves
+uniform float uBigWavesSpeed;
+
 void main() {
 
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);
@@ -16,8 +19,8 @@ void main() {
     // float elevation = sin(modelPosition.x * uBigWavesFrequency.x) * uBigWavesElevation;
 
     // Use the 'y' property of uBigWavesFrequency to add waves on the z-axis
-    float elevation = sin(modelPosition.x * uBigWavesFrequency.x + uTime) * 
-                        sin(modelPosition.z * uBigWavesFrequency.y + uTime) * 
+    float elevation = sin(modelPosition.x * uBigWavesFrequency.x + uTime * uBigWavesSpeed) * 
+                        sin(modelPosition.z * uBigWavesFrequency.y + uTime * uBigWavesSpeed) * 
                         uBigWavesElevation;
 
     modelPosition.y += elevation;

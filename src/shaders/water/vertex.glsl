@@ -8,6 +8,9 @@ uniform float uTime;
 // to control speed of the waves
 uniform float uBigWavesSpeed;
 
+// For mixing color
+varying float vElevation;
+
 void main() {
 
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);
@@ -29,4 +32,7 @@ void main() {
     vec4 projectionPosition = projectionMatrix * viewPosition;
 
     gl_Position = projectionPosition;
+
+    // Update Varying
+    vElevation = elevation;
 }
